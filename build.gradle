@@ -1,0 +1,14 @@
+dependencies {
+	// Spring Boot
+	compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+	// Validation
+	compile "javax.validation:validation-api:1.1.0.Final"
+	// Logging
+	compile "commons-logging:commons-logging:1.2"
+}
+
+springBoot {
+	mainClass = 'org.lukosan.salix.Application'
+}
+
+bintray.pkg.version.desc = 'Java Spring WWW publishing framework core module'
