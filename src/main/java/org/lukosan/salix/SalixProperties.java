@@ -14,7 +14,7 @@ public class SalixProperties {
 	private List<String> scopes = new ArrayList<>(); 
 	
 	public Boolean isMultisite() {
-		return multisite;
+		return multisite || (scopes != null && scopes.size() > 1);
 	}
 	
 	public void setMultisite(boolean multisite) {

@@ -5,6 +5,8 @@ dependencies {
 	compile "javax.validation:validation-api:1.1.0.Final"
 	// Logging
 	compile "commons-logging:commons-logging:1.2"
+	
+	testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
 springBoot {
