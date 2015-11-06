@@ -3,13 +3,11 @@ package org.lukosan.salix;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-import org.springframework.http.HttpStatus;
-
 public interface SalixUrl extends SalixScoped {
 	
 	String getUrl();
 
-	HttpStatus getStatus();
+	int getStatus();
 
 	String getView();
 	

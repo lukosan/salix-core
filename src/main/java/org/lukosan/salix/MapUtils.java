@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+// TODO refactor this ugly mess
 public class MapUtils {
 
 	private static final ObjectMapper MAPPER = new ObjectMapper();
