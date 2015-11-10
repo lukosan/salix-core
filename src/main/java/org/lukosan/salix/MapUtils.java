@@ -3,11 +3,12 @@ package org.lukosan.salix;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-// TODO refactor this ugly mess
+// TODO refactor this ugly mess; consider SpringEL
 public class MapUtils {
 
 	private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -16,15 +17,13 @@ public class MapUtils {
 		MAPPER.findAndRegisterModules();
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static String[] getStrings(Map<String, Object> map, String key) {
+	@SuppressWarnings({ "unchecked" })
+	public static List<String> getStrings(Map<String, Object> map, String key) {
 		Map<String, Object> m = resolve(map, key);
 		String k = resolveKey(key);
 		if(! m.containsKey(k))
-			m.put(k, new String[0]);
-		if(m.get(k) instanceof ArrayList)
-			return (String[]) ((ArrayList) m.get(k)).stream().toArray(size -> new String[size]);
-		return (String[]) m.get(k);
+			m.put(k, new ArrayList<String>());
+		return (List<String>) m.get(k);
 	}
 
 	public static String getString(Map<String, Object> map, String key) {
@@ -35,15 +34,13 @@ public class MapUtils {
 		return (String) m.get(k);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static Long[] getLongs(Map<String, Object> map, String key) {
+	@SuppressWarnings({ "unchecked" })
+	public static List<Long> getLongs(Map<String, Object> map, String key) {
 		Map<String, Object> m = resolve(map, key);
 		String k = resolveKey(key);
 		if(! m.containsKey(k))
 			m.put(k, new long[0]);
-		if(m.get(k) instanceof ArrayList)
-			return (Long[]) ((ArrayList) m.get(k)).stream().map(l -> Long.valueOf(l.toString())).toArray(size -> new Long[size]);
-		return (Long[]) m.get(k);
+		return (List<Long>) m.get(k);
 	}
 	
 	public static Long getLong(Map<String, Object> map, String key) {
@@ -87,7 +84,6 @@ public class MapUtils {
 		m.put(k, value);
 	}
 	
-
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> fromString(String map) {
 		try {
@@ -98,5 +94,4 @@ public class MapUtils {
 			return m;
 		}
 	}
-	
 }
