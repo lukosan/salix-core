@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 // TODO refactor this ugly mess; consider SpringEL
@@ -92,6 +93,14 @@ public class MapUtils {
 			Map<String, Object> m = new HashMap<String, Object>();
 			m.put("json", map);
 			return m;
+		}
+	}
+	
+	public static String asString(Map<String, Object> map) {
+		try {
+			return MAPPER.writeValueAsString(map);
+		} catch (JsonProcessingException e) {
+			return map.toString();
 		}
 	}
 }

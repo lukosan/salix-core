@@ -46,11 +46,15 @@ public interface SalixService {
 	SalixResource resource(String sourceId, String scope);
 
 	SalixResource save(String scope, String sourceId, String sourceUri, Map<String, Object> map);
-
+	
+	SalixResource save(String scope, String sourceId, String sourceUri, String contentType, String text);
+	
+	SalixResource save(String scope, String sourceId, String sourceUri, String contentType, byte[] bytes);
+	
 	List<SalixResource> allResources();
 
 	List<SalixTemplate> templatesIn(String scope);
 	
 	List<SalixResource> resourcesIn(String scope);
-		
+	
 }
