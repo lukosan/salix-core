@@ -6,6 +6,7 @@ dependencies {
 	// Json
 	compile 'com.fasterxml.jackson.core:jackson-core:2.6.2'
 	compile 'com.fasterxml.jackson.core:jackson-databind:2.6.2'
+	
 	// Logging
 	compile "commons-logging:commons-logging:1.2"
 	
