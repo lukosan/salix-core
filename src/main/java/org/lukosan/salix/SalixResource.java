@@ -1,5 +1,7 @@
 package org.lukosan.salix;
 
+import java.io.IOException;
+
 public interface SalixResource extends SalixScoped {
 
 	String getSourceId();
@@ -13,4 +15,8 @@ public interface SalixResource extends SalixScoped {
 	SalixResourceType getResourceType();
 	
 	String getContentType();
+
+	void writeTo(ResourceWriter writer) throws IOException;
+
+	boolean exists();
 }
